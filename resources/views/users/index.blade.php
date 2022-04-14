@@ -13,14 +13,37 @@
         <button>Pesquisar</button>
     </form>
 
-    <ul>
-        @foreach ($users as $user)
-            <li>
-                {{ $user->name }} - 
-                {{ $user->email }}
-                | <a href="{{ route('users.edit', $user->id) }}">Editar</a>
-                | <a href="{{ route('users.show', $user->id) }}">Detalhes</a>
-            </li>
-        @endforeach
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    E-mail
+                </th>
+                <th>
+                    Editar
+                </th>
+                <th>
+                    Detalhes
+                </th>
+                <th>
+                    Comentários
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach ($users as $user)
+                <tr>
+                    <th> {{ $user->name }} </th>  
+                    <th> {{ $user->email }} </th>
+                    <th> <a href="{{ route('users.edit', $user->id) }}"> Editar </a> </th>
+                    <th> <a href="{{ route('users.show', $user->id) }}"> Detalhes </a> </th>
+                    <th> <a href="{{ route('comments.index', $user->id) }}"> Anotações (0) </a> </th>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 @endsection
